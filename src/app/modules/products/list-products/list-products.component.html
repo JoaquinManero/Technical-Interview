@@ -1,0 +1,67 @@
+<div class="full-page-container">
+  <div class="container">
+    <div class="buttons-container">
+      <input type="text" class="search" placeholder="Search..." [(ngModel)]="filter" />
+      <button class="add-button" type="submit" [routerLink]="['/register']">Agregar</button>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Nombre del producto</th>
+            <th>
+              Descripción
+              <i class="gg-info"></i>
+            </th>
+            <th>
+              Fecha de lanzamiento
+              <i class="gg-info"></i>
+            </th>
+            <th>
+              Fecha de reestructuración
+              <i class="gg-info"></i>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of getDisplayedProducts()">
+            <td><img [src]="product.logo" class="image" alt="Logo" /></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.date_release | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ product.date_revision | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <div (click)="toggleDropdown(product.id)">
+                <i class="gg-more-vertical-alt"></i>
+                <div *ngIf="dropdownId === product.id" class="dropdown-menu">
+                  <div (click)="openModal(product)">Eliminar</div>
+                  <div (click)="redirectToModify(product.id)">Modificar</div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="error" *ngIf="validateNoResults()">No existen resultados para la búsqueda especificada. Por favor, intente nuevamente.</p>
+
+    <div class="footer">
+      <p>{{ getDisplayedProducts().length }} Resultados</p>
+      <select [(ngModel)]="pageSize" (change)="changePageSize(pageSize)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+    <div>
+      <button [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Siguiente</button>
+    </div>
+  </div>
+
+  <app-modal-state></app-modal-state>
+</div>

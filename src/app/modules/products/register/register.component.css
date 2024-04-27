@@ -1,0 +1,157 @@
+.full-page-container {
+  position: absolute;
+  top: 1;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.inputs-form {
+  height: 30px;
+  border: 1.5px solid #9a9595;
+  border-radius: 5px;
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.reset-button {
+  background-color: #dedede;
+  width: 120px;
+  height: 55px;
+  text-align: center;
+  color: black;
+  font-weight: 600;
+  font-size: small;
+}
+
+.submit-button {
+  background-color: #f0e221;
+  width: 120px;
+  height: 55px;
+  text-align: center;
+  color: black;
+  font-weight: 600;
+  font-size: small;
+}
+
+.separate {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #000;
+  margin-bottom: 40px;
+}
+
+.general-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  background-color: white;
+  padding: 55px;
+  border: 1px solid #dedede;
+}
+
+.error {
+  color: red;
+  font-size: small;
+}
+
+.success {
+  color: green;
+  font-size: small;
+}
+
+button:disabled {
+  background-color: grey;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
+
+@media (max-width: 770px) {
+  .first-group {
+    flex-direction: column;
+  }
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 40px;
+  margin-top: auto;
+}
+
+.campo1 {
+  margin-bottom: 15px;
+  width: 350px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: small;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.botones {
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .primer {
+    flex-direction: column;
+  }
+
+  .campo1 {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,107 @@
+<div class="full-page-container">
+  <div class="general-container">
+    <p class="success" *ngIf="successfulMessage">
+      Producto registrado exitosamente. Por favor, vaya a la
+      <a routerLink="/">lista de productos</a>.
+    </p>
+    <h1>Formulario de registro</h1>
+    <hr class="separate" />
+
+    <div class="container">
+      <form [formGroup]="registerForm" (ngSubmit)="postData()">
+        <div class="first-group">
+          <div class="campo1">
+            <label for="id">ID</label>
+            <input
+              class="inputs-form"
+              type="text"
+              id="id"
+              name="id"
+              formControlName="id"
+              placeholder="ID"
+              required
+              [ngClass]="{ 'input-error': registerForm.controls['id'].errors }"
+            />
+            <div *ngIf="registerForm.controls['id'].errors?.['required']" class="error">El ID es requerido</div>
+            <div *ngIf="registerForm.controls['id'].errors?.['minlength']" class="error">El ID debe tener al menos 3 caracteres</div>
+            <div *ngIf="registerForm.controls['id'].errors?.['maxlength']" class="error">El ID no puede tener más de 10 caracteres</div>
+            <div *ngIf="flagExists" class="error">El ID ya existe.</div>
+          </div>
+          <div class="campo1">
+            <label for="name">Nombre</label>
+            <input
+              type="text"
+              id="name"
+              class="inputs-form"
+              name="name"
+              formControlName="name"
+              placeholder="Nombre"
+              [ngClass]="{ 'input-error': registerForm.controls['name'].errors }"
+              required
+            />
+            <div *ngIf="registerForm.controls['name'].errors?.['required']" class="error">El nombre es requerido</div>
+            <div *ngIf="registerForm.controls['name'].errors?.['minlength']" class="error">El nombre debe tener al menos 5 caracteres</div>
+            <div *ngIf="registerForm.controls['name'].errors?.['maxlength']" class="error">El nombre no puede tener más de 100 caracteres</div>
+          </div>
+        </div>
+        <div class="first-group">
+          <div class="campo1">
+            <label for="description">Descripción</label>
+            <input
+              type="text"
+              id="description"
+              class="inputs-form"
+              name="description"
+              formControlName="description"
+              placeholder="Descripción"
+              [ngClass]="{ 'input-error': registerForm.controls['id'].errors }"
+              required
+            />
+            <div *ngIf="registerForm.controls['description'].errors?.['required']" class="error">La descripción es requerida</div>
+            <div *ngIf="registerForm.controls['description'].errors?.['minlength']" class="error">La descripción debe tener al menos 10 caracteres</div>
+            <div *ngIf="registerForm.controls['description'].errors?.['maxlength']" class="error">La descripción no puede tener más de 200 caracteres</div>
+          </div>
+          <div class="campo1">
+            <label for="logo">Logo</label>
+            <input
+              type="text"
+              id="logo"
+              class="inputs-form"
+              name="logo"
+              formControlName="logo"
+              placeholder="Logo"
+              [ngClass]="{ 'input-error': registerForm.controls['logo'].errors }"
+              required
+            />
+            <div *ngIf="registerForm.controls['logo'].errors?.['required']" class="error">El logo es requerido</div>
+          </div>
+        </div>
+        <div class="first-group">
+          <div class="campo1">
+            <label for="nombre">Fecha Liberación</label>
+            <input
+              type="date"
+              id="dateReleased"
+              class="inputs-form"
+              name="dateReleased"
+              [min]="today"
+              formControlName="dateReleased"
+              [ngClass]="{ 'input-error': registerForm.controls['dateReleased'].errors }"
+              required
+            />
+            <div *ngIf="registerForm.controls['dateReleased'].errors?.['required']" class="error">La fecha de liberación es requerida</div>
+          </div>
+          <div class="campo1">
+            <label for="tarjetaCredito">Fecha Revisión</label>
+            <input type="date" id="dateReviewed" class="inputs-form" name="dateReviewed" formControlName="dateReviewed" required />
+            <div *ngIf="registerForm.controls['dateReviewed'].errors?.['required']" class="error">La fecha de revisión es requerida</div>
+          </div>
+        </div>
+        <div class="botones">
+          <button class="reset-button" (click)="resetForm()">Reiniciar</button>
+          <button class="submit-button" type="submit" [disabled]="registerForm.invalid">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
