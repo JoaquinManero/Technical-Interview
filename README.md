@@ -6,15 +6,10 @@ Este proyecto es la solución a la prueba técnica de Devsu.
 
 ## Tecnologías.
 
-- Angular
+- Angular, HTML & CSS
 - Typescript
-
-## Directorio
-- Una vez abierto el proyecto con el editor de código, abrir una terminal y localizarse en la carpeta app.
   
-```bash
-cd app
-```
+
 
 ## Instalación
 
